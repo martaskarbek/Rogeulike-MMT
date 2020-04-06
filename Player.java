@@ -1,5 +1,6 @@
 public class Player {
-    Coordinates position;
+    public int points;
+	Coordinates position;
 
     public Player(){
         this.position = new Coordinates(5, 5);
