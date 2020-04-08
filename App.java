@@ -11,5 +11,10 @@ public class App {
         jframe.add(textField);
         jframe.setSize(100, 100);
         jframe.setVisible(true);
+        
+        Map2 map2 = new Map2();
+        map2.file = "map2.txt";
+        Board board = new Board(map2.bufferMap());
+        board.printBoard();
     }
 }
