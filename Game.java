@@ -23,7 +23,7 @@ class Game extends KeyAdapter {
                 break;
             case 'a':
                 // Hero.moveLeft()
-                player.move(new Coordinates(0, 1));
+                player.move(new Coordinates(0, -1));
                 break;
             case 'd':
                 // Hero.moveRight()

@@ -1,4 +1,5 @@
 class Square {
+
     private String look;
 
     public Square(String look) {
@@ -15,5 +16,5 @@ class Square {
 
     public String setLook(String look) {
         return this.look = look;
-    }
+
 }

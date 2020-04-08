@@ -11,7 +11,6 @@ public class Board {
         }
     }
 
-
     public void printBoard() {
         for (Square[] row : gameBoard) {
             for (Square square : row) {
@@ -19,6 +18,7 @@ public class Board {
             }
             System.out.println();
         }
+
     }
 
     public Square[][] getGameBoard() {
