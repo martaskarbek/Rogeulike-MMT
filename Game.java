@@ -15,12 +15,14 @@ class Game extends KeyAdapter {
         this.map2 = new Map2();
         map2.file = "map2.txt";
         this.board = new Board(map2.bufferMap());
+        board.printBoard();
     }
 
     @Override
     public void keyPressed(KeyEvent event) {
-
+        
         char ch = event.getKeyChar();
+        clearScreen();
 
         switch(ch) {
             case 'w':
@@ -41,4 +43,9 @@ class Game extends KeyAdapter {
         board.printBoard();
         // print board again
     }
+
+    public static void clearScreen() {
+        System. out. print("\033[H\033[2J");
+        System. out. flush();
+        }
 }
