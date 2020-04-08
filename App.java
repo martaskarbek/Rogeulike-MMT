@@ -17,7 +17,5 @@ public class App {
         Board board = new Board(map2.bufferMap());
         board.printBoard();
 
-        Board board = new Board();
-        board.printBoard();
     }
 }
