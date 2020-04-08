@@ -25,7 +25,7 @@ public class Board {
         for (String[] row : output) {
             for (String square : row) {
                 if(square == null) {
-                    System.out.print(" .");
+                    System.out.print(".");
                     continue;
                 }
                 System.out.print(square);
