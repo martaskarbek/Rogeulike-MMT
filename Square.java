@@ -18,3 +18,4 @@ class Square {
         return this.look = look;
 
 }
+}
