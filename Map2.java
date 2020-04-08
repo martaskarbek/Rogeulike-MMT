@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Map2 {
-    String file;
+    public String file;
 
     public ArrayList<String> readMap(String file) {
         final ArrayList<String> welcomeReaded = new ArrayList<>();
