@@ -1,7 +1,7 @@
 
 public class Discette extends Item{
     public Discette(String itemLook) {
-        super("D");
+        super(itemLook);
     }
 
     @Override

@@ -1,11 +1,20 @@
 class Square {
-    private String state;
 
-    public Square() {
-        state = ". ";
+    private String look;
+
+    public Square(String look) {
+        this.look = look;
     }
 
     public String toString() {
-        return state;
+        return look;
     }
+
+    public String getLook() {
+        return look;
+    }
+
+    public String setLook(String look) {
+        return this.look = look;
+
 }
