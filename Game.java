@@ -15,6 +15,7 @@ class Game extends KeyAdapter {
         this.map2 = new Map2();
         map2.file = "map2.txt";
         this.board = new Board(map2.bufferMap());
+        board.printBoard();
     }
 
     @Override
@@ -22,6 +23,7 @@ class Game extends KeyAdapter {
 
         char ch = event.getKeyChar();
 
+        clearScreen();
         switch(ch) {
             case 'w':
                 board.getPlayer().move(this.w);
@@ -39,6 +41,10 @@ class Game extends KeyAdapter {
         // System.out.println(board.getPlayer().toString());
         
         board.printBoard();
-        // print board again
+    }
+
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

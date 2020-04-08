@@ -1,5 +1,5 @@
 public class Board {
-    private final int rows = 30, columns = 70;
+    private final int rows = 30, columns = 30;
     Player player;
     // ArrayList<Item> items;
     // ArrayList<Enemy> enemy;
@@ -22,13 +22,13 @@ public class Board {
         // assign items from list
         // assign enemies for list
 
-        for (String[] row : output) {
-            for (String square : row) {
-                if(square == null) {
+        for(int i = 0; i< rows; i++) {
+            for(int j = 0; j < columns; j++) {
+                if(output[i][j] == null) {
                     System.out.print(" .");
                     continue;
                 }
-                System.out.print(square);
+                System.out.print(output[i][j]);
             }
             System.out.println();
         }
@@ -37,8 +37,4 @@ public class Board {
     public Player getPlayer() {
         return this.player;
     }
-
-    // public Square[][] getGameBoard() {
-    //     return gameBoard;
-    // }
 }
