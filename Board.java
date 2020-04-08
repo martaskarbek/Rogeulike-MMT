@@ -21,7 +21,6 @@ public class Board {
         output[this.player.getPosition().getX()][this.player.getPosition().getY()] = this.player.getSign();
         // assign items from list
         // assign enemies for list
-
         for (String[] row : output) {
             for (String square : row) {
                 if(square == null) {
