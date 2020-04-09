@@ -7,5 +7,5 @@ public abstract class Item {
     }
 
 
-    public abstract void changePoints(Player player);
+    //public abstract void changePoints(Player player);
 }
