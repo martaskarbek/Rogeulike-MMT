@@ -73,11 +73,16 @@ public class Board {
     }
 
     private void generateObstacles() {
-        Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##");
-        Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##");
-        Obstacle obstacle4 = new Obstacle(new Coordinates(0,0),1,30, "#");
-        Obstacle obstacle5 = new Obstacle(new Coordinates(0,this.columns-1),1,30, "#");
-        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
+        Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, Emote.WALL1.getEmote());
+        Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, Emote.WALL1.getEmote());
+        Obstacle obstacle3 = new Obstacle(new Coordinates(0,0),1,30, Emote.WALL2.getEmote());
+        Obstacle obstacle4 = new Obstacle(new Coordinates(0,this.columns-1),1,30, Emote.WALL2.getEmote());
+        Obstacle obstacle5 = new Obstacle(new Coordinates(22,21), 1, 7, Emote.LAVA.getEmote());
+        Obstacle obstacle6 = new Obstacle(new Coordinates(22,22), 1, 7, Emote.WALL4.getEmote());
+        Obstacle obstacle7 = new Obstacle(new Coordinates(22,23), 2, 1, Emote.WALL3.getEmote());
+        Obstacle obstacle8 = new Obstacle(new Coordinates(21,21), 6, 1, Emote.LAVA.getEmote());
+        Obstacle obstacle9 = new Obstacle(new Coordinates(6, 6), 1, 1, Emote.KEY.getEmote());
+        
         
 
         this.obstacles.add(obstacle1);
@@ -85,11 +90,16 @@ public class Board {
         this.obstacles.add(obstacle3);
         this.obstacles.add(obstacle4);
         this.obstacles.add(obstacle5);
+        this.obstacles.add(obstacle6);
+        this.obstacles.add(obstacle7);
+        this.obstacles.add(obstacle8);
+        this.obstacles.add(obstacle9);
     }
 
     private void generateItems(){
-        Candy candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getemote());
-        Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getemote());
+        Candy candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getEmote());
+        Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getEmote());
+
         this.items.add(candy);
         this.items.add(candy1);
         
@@ -97,10 +107,10 @@ public class Board {
     }
 
     private void generateEnemies() {
-        Enemy ghost = new Ghost(new Coordinates(10, 17), Emote.GHOST.getemote());
-        Enemy vampire = new Vampire(new Coordinates(20, 7), Emote.MANVAMPIRE.getemote());
-        Enemy spider = new Spider(new Coordinates(16, 4), Emote.SPIDER.getemote());
-        Enemy zombie = new Zombie(new Coordinates(1, 23), Emote.WOMANZOMBIE.getemote());
+        Enemy ghost = new Ghost(new Coordinates(10, 17), Emote.GHOST.getEmote());
+        Enemy vampire = new Vampire(new Coordinates(20, 7), Emote.MANVAMPIRE.getEmote());
+        Enemy spider = new Spider(new Coordinates(16, 4), Emote.SPIDER.getEmote());
+        Enemy zombie = new Zombie(new Coordinates(1, 23), Emote.WOMANZOMBIE.getEmote());
         this.enemies.add(ghost);
         this.enemies.add(vampire);
         this.enemies.add(spider);
