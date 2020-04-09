@@ -72,6 +72,7 @@ public class Board {
         }
 
         System.out.println(print);
+        System.out.println(this.player.getPoints());
     }
 
     public Player getPlayer() {
@@ -97,9 +98,9 @@ public class Board {
 
     private void generateEnemies() {
         Enemy ghost = new Ghost(new Coordinates(10, 17), 1, 1, Emote.GHOST.getemote());
-        Enemy vampire = new Ghost(new Coordinates(20, 7), 1 , 1, Emote.MANVAMPIRE.getemote());
-        Enemy spider = new Ghost(new Coordinates(16, 4), 1, 1, Emote.SPIDER.getemote());
-        Enemy zombie = new Ghost(new Coordinates(1, 23), 1, 1, Emote.WOMANZOMBIE.getemote());
+        Enemy vampire = new Vampire(new Coordinates(20, 7), 1 , 1, Emote.MANVAMPIRE.getemote());
+        Enemy spider = new Spider(new Coordinates(16, 4), 1, 1, Emote.SPIDER.getemote());
+        Enemy zombie = new Zombie(new Coordinates(1, 23), 1, 1, Emote.WOMANZOMBIE.getemote());
         this.enemies.add(ghost);
         this.enemies.add(vampire);
         this.enemies.add(spider);
@@ -122,7 +123,7 @@ public class Board {
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
                    this.player.setPoints(-10);
-                   System.out.println(this.player.getPoints());
+                   //System.out.println(this.player.getPoints());
                }
                return false;
            }
@@ -142,7 +143,7 @@ public class Board {
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(enemy instanceof Enemy) {
                    this.player.setPoints(-10);
-                   System.out.println(this.player.getPoints());
+                   //System.out.println(this.player.getPoints());
                }
                return false;
            }
