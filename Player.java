@@ -1,5 +1,5 @@
 public class Player {
-    private int points;
+    public int points;
     Coordinates position;
     private String sign = " @";
 
