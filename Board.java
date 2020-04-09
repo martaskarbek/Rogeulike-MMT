@@ -189,12 +189,6 @@ public class Board {
         return true;
     }
 
-    // public boolean isEnemy(Coordinates coord) {
-    //     int x = player.getPosition().getX() + coord.getX();
-    //     int y = player.getPosition().getY() + coord.getY();
-    //     return true;
-    // }
-
     private boolean isCoordinatesInRange(int x, int y, Coordinates pivot, int height, int width) {
         return x >= pivot.getX()
             && x < pivot.getX()+height 

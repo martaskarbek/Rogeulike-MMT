@@ -5,17 +5,13 @@ import java.awt.event.KeyEvent;
 class Game extends KeyAdapter {
     
     Board board;
-    Board1 board1;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
-        this.board = new Board();
-        this.board1 = new Board1();
-        board.printBoard();
-        board1.printBoard();
+        mainMenu();
     }
 
     @Override
@@ -62,12 +58,12 @@ class Game extends KeyAdapter {
         this.board = new Board();
         System.out.println("1. Play the game\n2. High Score\n0. Exit");
         int option;
-        option = InputProvider.getInt("Enter a number to choose: ");
+        option = Input.getIntInput("Enter a number to choose: ");
         clearScreen();
         System.out.println("");
         switch (option) {
             case 1:
-                board.printBoard();;
+                board.printBoard();
                 break;
             case 2:
                 // High Score
