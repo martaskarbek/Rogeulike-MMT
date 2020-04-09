@@ -51,10 +51,11 @@ class Game extends KeyAdapter {
         
         board.printBoard();
         // print board again
+        // print board again
     }
 
     public static void clearScreen() {
         System. out. print("\033[H\033[2J");
-        System. out. flush();
+        System. out. flush(); 
     }
 }
