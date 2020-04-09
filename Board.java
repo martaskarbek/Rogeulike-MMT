@@ -73,6 +73,9 @@ public class Board {
 
         System.out.println(print);
         System.out.println(this.player.getPoints());
+        for (Enemy enemy : enemies) {
+            System.out.println(enemy.getHealthPoints());
+        }
     }
 
     public Player getPlayer() {
@@ -142,15 +145,19 @@ public class Board {
             if (isCoordinatesInRange(x, y, pivot, height, width)) {
                 if(enemy instanceof Spider) {
                    this.player.setPoints(-5);
+                   enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Vampire) {
                     this.player.setPoints(-20);
+                    enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Ghost) {
                     this.player.setPoints(-10);
+                    enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Zombie) {
                     this.player.setPoints(-15);
+                    enemy.setHealthPoints(-10);
                 }
                 return false;
             }
