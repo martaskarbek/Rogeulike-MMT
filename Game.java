@@ -32,13 +32,19 @@ class Game extends KeyAdapter {
                 }
                 break;
             case 's':
-                board.getPlayer().move(this.s);
+                if (board.canPlayerMove(this.s)) {
+                    board.getPlayer().move(this.s);
+                }
                 break;
             case 'a':
-                board.getPlayer().move(this.a);
+                if (board.canPlayerMove(this.a)){
+                    board.getPlayer().move(this.a);
+                }
                 break;
             case 'd':
-                board.getPlayer().move(this.d);
+                if (board.canPlayerMove(this.d)) {
+                    board.getPlayer().move(this.d);
+                }
                 break;   
         }
         // System.out.println(board.getPlayer().toString());
