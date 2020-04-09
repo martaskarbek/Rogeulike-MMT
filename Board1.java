@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class Board {
+public class Board1 {
     private final int rows = 30, columns = 30;
     Player player;
     ArrayList<Obstacle> obstacles;
@@ -9,7 +9,7 @@ public class Board {
     ArrayList<Enemy> enemies;
     ArrayList<Item> inventory;
 
-    public Board() {
+    public Board1() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
         this.items = new ArrayList<>();
@@ -215,13 +215,5 @@ public class Board {
             if(enemy.getHealth() == 0)
                 enemies.remove(enemy);
     }
-
-    // public boolean equals(Object obj) {
-    //     if (obj instanceof Obstacle) {
-    //         ArrayTest o = (ArrayTest) obj;
-    //         return o.i == this.i;
-    //     }
-    //     return false;
-    // }
 
 }

@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 class Game extends KeyAdapter {
     
     Board board;
+    Board1 board1;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
@@ -12,7 +13,9 @@ class Game extends KeyAdapter {
 
     public Game() {
         this.board = new Board();
+        this.board1 = new Board1();
         board.printBoard();
+        board1.printBoard();
     }
 
     @Override
