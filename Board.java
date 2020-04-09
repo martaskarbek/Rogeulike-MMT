@@ -123,7 +123,6 @@ public class Board {
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
                    this.player.setPoints(-10);
-                   //System.out.println(this.player.getPoints());
                }
                return false;
            }
@@ -140,13 +139,21 @@ public class Board {
             int height = enemy.getHeight();
             Coordinates pivot = enemy.getPivot();
             
-           if (isCoordinatesInRange(x, y, pivot, height, width)) {
-               if(enemy instanceof Enemy) {
-                   this.player.setPoints(-10);
-                   //System.out.println(this.player.getPoints());
-               }
-               return false;
-           }
+            if (isCoordinatesInRange(x, y, pivot, height, width)) {
+                if(enemy instanceof Spider) {
+                   this.player.setPoints(-5);
+                }
+                if(enemy instanceof Vampire) {
+                    this.player.setPoints(-20);
+                }
+                if(enemy instanceof Ghost) {
+                    this.player.setPoints(-10);
+                }
+                if(enemy instanceof Zombie) {
+                    this.player.setPoints(-15);
+                }
+                return false;
+            }
         }
         return true;
     }
