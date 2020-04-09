@@ -3,7 +3,11 @@ public enum Emote {
     WALL2("#"),
     PLAYER(" @"),
     FLOOR(" ."),
-    LAVA("\ud83d\udd25");
+    LAVA("\ud83d\udd25"),
+    SPIDER("\ud83d\udd77\ufe0f"),
+    MANVAMPIRE("\ud83e\udddb\u200d\u2642\ufe0f"),
+    GHOST("\ud83d\udc7b"),
+    WOMANZOMBIE("\ud83e\udddf\u200d\u2640\ufe0f");
     
     private String emote;
 
