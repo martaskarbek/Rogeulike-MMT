@@ -11,7 +11,8 @@ public enum Emote {
     MANVAMPIRE(" \ud83e\udddb\u200d\ufe0f"),
     GHOST(" \ud83d\udc7b"),
     WOMANZOMBIE(" \ud83e\udddf\u200d\ufe0f"),
-    KEY(" \ud83d\udddd\ufe0f");
+    KEY(" \ud83d\udddd\ufe0f"),
+    DOORS(" \ud83d\udeaa");
     
     private String emote;
 

@@ -1,7 +1,6 @@
 public class Vampire extends Enemy{
 
- 
-    public Vampire(Coordinates pivot, int width, int height, String sign) {
-        super(pivot, width, height, sign);
+    public Vampire(Coordinates enemy, String sign, int health, int attack) {
+        super(enemy, sign, health, attack);
     }
 }

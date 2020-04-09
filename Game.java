@@ -11,8 +11,7 @@ class Game extends KeyAdapter {
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
-        this.board = new Board();
-        board.printBoard();
+        mainMenu();
     }
 
     @Override
@@ -53,5 +52,26 @@ class Game extends KeyAdapter {
     public static void clearScreen() {
         System. out. print("\033[H\033[2J");
         System. out. flush();
+    }
+
+    public void mainMenu(){
+        this.board = new Board();
+        System.out.println("1. Play the game\n2. High Score\n0. Exit");
+        int option;
+        option = Input.getIntInput("Enter a number to choose: ");
+        clearScreen();
+        System.out.println("");
+        switch (option) {
+            case 1:
+                board.printBoard();
+                break;
+            case 2:
+                // High Score
+                break;
+            case 0:
+                // exitProgram();
+                break;
+
+        }
     }
 }

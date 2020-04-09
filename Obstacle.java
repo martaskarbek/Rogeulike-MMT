@@ -1,4 +1,3 @@
-
 public class Obstacle {
     Coordinates pivot;
     int width;

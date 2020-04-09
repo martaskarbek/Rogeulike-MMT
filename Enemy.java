@@ -1,16 +1,17 @@
 
 public abstract class Enemy {
-    int healthPoints;
-    Coordinates pivot;
-    int width;
-    int height;
+
+    int health;
+    int attack;
+    Coordinates enemy;
     String sign;
 
-    public Enemy(Coordinates pivot, int width, int height, String sign) {
-        this.width = width;
-        this.height = height;
-        this.pivot = pivot;
+    public Enemy(Coordinates enemy, String sign, int health, int attack) {
+        this.enemy = enemy;
+
         this.sign = sign;
+        this.health = health;
+        this.attack = attack;
     }
 
     public int getWidth() {
@@ -29,11 +30,15 @@ public abstract class Enemy {
         return this.sign;
     }
 
-    public int getHealthPoints() {
-        return this.healthPoints;
+    public int getHealth() {
+        return this.health;
     }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints += healthPoints;
+    public void setHealth(int health) {
+        this.health += health;
+    }
+
+    public int getAttack() {
+        return this.attack;
     }
 }
