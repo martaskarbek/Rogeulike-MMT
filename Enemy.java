@@ -1,5 +1,6 @@
 
 public abstract class Enemy {
+    int healthPoints;
     Coordinates pivot;
     int width;
     int height;
@@ -26,5 +27,13 @@ public abstract class Enemy {
 
     public String getSymbol() {
         return this.sign;
+    }
+
+    public int getHealthPoints() {
+        return this.healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints += healthPoints;
     }
 }
