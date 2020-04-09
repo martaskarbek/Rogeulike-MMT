@@ -6,14 +6,16 @@ public class Board {
     Player player;
     ArrayList<Obstacle> obstacles;
     ArrayList<Item> items;
-    // ArrayList<Enemy> enemy;
+    ArrayList<Enemy> enemies;
 
     public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.enemies = new ArrayList<>();
         generateObstacles();
         generateItems();
+        generateEnemies();
     }
 
     public void printBoard() {
@@ -41,6 +43,17 @@ public class Board {
             Coordinates sign = item.getItem();
             output[sign.getX()][sign.getY()] = item.getSign();
         }
+        for (Enemy enemy : enemies) {
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
+            Coordinates pivot = enemy.getPivot();
+
+            for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
+                for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
+                    output[i][j] = enemy.getSymbol();
+                }
+            }
+        }
         
         for (String[] row : output) {
             for (String square : row) {
@@ -54,6 +67,10 @@ public class Board {
         }
 
         System.out.println(print);
+        System.out.println(this.player.getPoints());
+        for (Enemy enemy : enemies) {
+            System.out.println(enemy.getHealthPoints());
+        }
     }
 
     public Player getPlayer() {
@@ -80,6 +97,19 @@ public class Board {
         Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getemote());
         this.items.add(candy);
         this.items.add(candy1);
+        
+
+    }
+
+    private void generateEnemies() {
+        Enemy ghost = new Ghost(new Coordinates(10, 17), 1, 1, Emote.GHOST.getemote());
+        Enemy vampire = new Vampire(new Coordinates(20, 7), 1 , 1, Emote.MANVAMPIRE.getemote());
+        Enemy spider = new Spider(new Coordinates(16, 4), 1, 1, Emote.SPIDER.getemote());
+        Enemy zombie = new Zombie(new Coordinates(1, 23), 1, 1, Emote.WOMANZOMBIE.getemote());
+        this.enemies.add(ghost);
+        this.enemies.add(vampire);
+        this.enemies.add(spider);
+        this.enemies.add(zombie);
     }
 
     public ArrayList<Obstacle> getObstacles() {
@@ -102,11 +132,16 @@ public class Board {
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
                    this.player.setPoints(-10);
-                   System.out.println(this.player.getPoints());
                }
                return false;
            }
         }
+        return true;
+    }
+
+    public boolean isEnemy(Coordinates coord) {
+        int x = player.getPosition().getX() + coord.getX();
+        int y = player.getPosition().getY() + coord.getY();
 
         for (Item item : items) {
             Coordinates sign = item.getItem();
@@ -121,6 +156,31 @@ public class Board {
            }
         }
 
+        for (Enemy enemy : enemies) {
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
+            Coordinates pivot = enemy.getPivot();
+            
+            if (isCoordinatesInRange(x, y, pivot, height, width)) {
+                if(enemy instanceof Spider) {
+                   this.player.setPoints(-5);
+                   enemy.setHealthPoints(-10);
+                }
+                if(enemy instanceof Vampire) {
+                    this.player.setPoints(-20);
+                    enemy.setHealthPoints(-10);
+                }
+                if(enemy instanceof Ghost) {
+                    this.player.setPoints(-10);
+                    enemy.setHealthPoints(-10);
+                }
+                if(enemy instanceof Zombie) {
+                    this.player.setPoints(-15);
+                    enemy.setHealthPoints(-10);
+                }
+                return false;
+            }
+        }
         return true;
     }
 
