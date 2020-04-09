@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 class Game extends KeyAdapter {
     
     Board2 board;
+    Board board2;
+    Player playerPoints;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
@@ -12,7 +14,14 @@ class Game extends KeyAdapter {
 
     public Game() {
         this.board = new Board2();
-        board.printBoard();
+        this.board2 = new Board();
+        int playerPts = playerPoints.getPoints();
+        // board.printBoard();
+        if(playerPts == 0){
+            board.printBoard();
+        } else if(playerPts == 10) {
+            board2.printBoard();
+        }
     }
 
     @Override

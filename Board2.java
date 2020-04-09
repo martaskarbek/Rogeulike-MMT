@@ -58,11 +58,8 @@ public class Board2 {
         }
 
         System.out.println(print);
-        System.out.println("HP" + this.player.getHealth());
-        // for (Enemy enemy : enemies) {
-        //     System.out.println(enemy.getHealthPoints());
-        // }
-
+        System.out.println("HP " + this.player.getHealth());
+        System.out.println("points " + this.player.getPoints());
     }
 
     public Player getPlayer() {
@@ -104,7 +101,7 @@ public class Board2 {
     }
 
     private void generateItems(){
-        Candy candy = new Candy(new Coordinates(4, 20), Emote.CANDY.getEmote());
+        Candy candy = new Candy(new Coordinates(28, 28), Emote.CANDY.getEmote());
         Key key = new Key(new Coordinates(28, 1), Emote.KEY.getEmote());
 
         this.items.add(candy);
@@ -147,7 +144,7 @@ public class Board2 {
             
            if (isPlayerOnItemOrEnemy(x, y, sign)) {
                if(item instanceof Candy) {
-                   this.player.setHealth(10);
+                   this.player.setPoints(10);
                    items.remove(item);
                    System.out.println(this.player.getHealth());
                }

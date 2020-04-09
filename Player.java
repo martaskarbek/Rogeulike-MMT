@@ -1,5 +1,5 @@
 public class Player {
-    private int points;
+    private int points = 0;
     private int health = 200;
     Coordinates position;
     private String sign = Emote.PLAYER.getEmote();
