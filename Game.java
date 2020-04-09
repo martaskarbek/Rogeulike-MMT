@@ -12,9 +12,7 @@ class Game extends KeyAdapter {
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
-        this.map2 = new Map2();
-        map2.file = "map2.txt";
-        this.board = new Board(map2.bufferMap());
+        this.board = new Board();
         board.printBoard();
     }
 
