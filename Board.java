@@ -10,7 +10,7 @@ public class Board {
     // ArrayList<Item> items;
     // ArrayList<Enemy> enemy;
 
-    public Board(String[][] bufferMap) {
+    public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
         generateObstacles();
@@ -68,7 +68,7 @@ public class Board {
         // Emoticons.fire
         Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##"); //top bound
         Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##"); // bottom bound
-        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25");
+        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
         Obstacle obstacle4 = new Obstacle(new Coordinates(0,0),1,30, "#");
         Obstacle obstacle5 = new Obstacle(new Coordinates(0,this.columns-1),1,30, "#");
 
