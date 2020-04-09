@@ -25,7 +25,7 @@ public abstract class Enemy {
         return this.pivot;
     }
 
-    public String getSymbol() {
+    public String getSign() {
         return this.sign;
     }
 
