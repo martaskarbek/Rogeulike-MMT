@@ -1,5 +1,6 @@
 public class Player {
     private int points;
+    private int health = 200;
     Coordinates position;
     private String sign = " @";
 
@@ -22,6 +23,14 @@ public class Player {
 
     public String toString() {
         return position.getX() + ", " + position.getY();
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health += health;
     }
 
     public int getPoints() {

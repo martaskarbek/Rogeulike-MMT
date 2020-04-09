@@ -43,16 +43,10 @@ public class Board {
             Coordinates sign = item.getItem();
             output[sign.getX()][sign.getY()] = item.getSign();
         }
-        for (Enemy enemy : enemies) {
-            int width = enemy.getWidth();
-            int height = enemy.getHeight();
-            Coordinates pivot = enemy.getPivot();
 
-            for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
-                for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
-                    output[i][j] = enemy.getSymbol();
-                }
-            }
+        for (Enemy enemy : enemies) {
+            Coordinates sign = enemy.getEnemy();
+            output[sign.getX()][sign.getY()] = enemy.getSign();
         }
         
         for (String[] row : output) {
@@ -67,10 +61,11 @@ public class Board {
         }
 
         System.out.println(print);
-        System.out.println(this.player.getPoints());
-        for (Enemy enemy : enemies) {
-            System.out.println(enemy.getHealthPoints());
-        }
+        // System.out.println(this.player.getPoints());
+        // for (Enemy enemy : enemies) {
+        //     System.out.println(enemy.getHealthPoints());
+        // }
+
     }
 
     public Player getPlayer() {
@@ -102,10 +97,10 @@ public class Board {
     }
 
     private void generateEnemies() {
-        Enemy ghost = new Ghost(new Coordinates(10, 17), 1, 1, Emote.GHOST.getemote());
-        Enemy vampire = new Vampire(new Coordinates(20, 7), 1 , 1, Emote.MANVAMPIRE.getemote());
-        Enemy spider = new Spider(new Coordinates(16, 4), 1, 1, Emote.SPIDER.getemote());
-        Enemy zombie = new Zombie(new Coordinates(1, 23), 1, 1, Emote.WOMANZOMBIE.getemote());
+        Enemy ghost = new Ghost(new Coordinates(10, 17), Emote.GHOST.getemote());
+        Enemy vampire = new Vampire(new Coordinates(20, 7), Emote.MANVAMPIRE.getemote());
+        Enemy spider = new Spider(new Coordinates(16, 4), Emote.SPIDER.getemote());
+        Enemy zombie = new Zombie(new Coordinates(1, 23), Emote.WOMANZOMBIE.getemote());
         this.enemies.add(ghost);
         this.enemies.add(vampire);
         this.enemies.add(spider);
@@ -136,17 +131,11 @@ public class Board {
                return false;
            }
         }
-        return true;
-    }
-
-    public boolean isEnemy(Coordinates coord) {
-        int x = player.getPosition().getX() + coord.getX();
-        int y = player.getPosition().getY() + coord.getY();
 
         for (Item item : items) {
             Coordinates sign = item.getItem();
             
-           if (isPlayerOnItem(x, y, sign)) {
+           if (isPlayerOnItemOrEnemy(x, y, sign)) {
                if(item instanceof Candy) {
                    this.player.setPoints(10);
                    items.remove(item);
@@ -157,32 +146,42 @@ public class Board {
         }
 
         for (Enemy enemy : enemies) {
-            int width = enemy.getWidth();
-            int height = enemy.getHeight();
-            Coordinates pivot = enemy.getPivot();
+            Coordinates sign = enemy.getEnemy();
             
-            if (isCoordinatesInRange(x, y, pivot, height, width)) {
+            if (isPlayerOnItemOrEnemy(x, y, sign)) {
                 if(enemy instanceof Spider) {
-                   this.player.setPoints(-5);
-                   enemy.setHealthPoints(-10);
+                   this.player.setHealth(-5);
+                   enemies.remove(enemy);
+                   System.out.println(this.player.getHealth());
+                //    enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Vampire) {
-                    this.player.setPoints(-20);
-                    enemy.setHealthPoints(-10);
+                    this.player.setHealth(-20);
+                    enemies.remove(enemy);
+                    System.out.println(this.player.getHealth());
+                    // enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Ghost) {
-                    this.player.setPoints(-10);
-                    enemy.setHealthPoints(-10);
+                    this.player.setHealth(-10);
+                    enemies.remove(enemy);
+                    // enemy.setHealthPoints(-10);
                 }
                 if(enemy instanceof Zombie) {
-                    this.player.setPoints(-15);
-                    enemy.setHealthPoints(-10);
+                    this.player.setHealth(-15);
+                    enemies.remove(enemy);
+                    // enemy.setHealthPoints(-10);
                 }
                 return false;
             }
         }
         return true;
     }
+
+    // public boolean isEnemy(Coordinates coord) {
+    //     int x = player.getPosition().getX() + coord.getX();
+    //     int y = player.getPosition().getY() + coord.getY();
+    //     return true;
+    // }
 
     private boolean isCoordinatesInRange(int x, int y, Coordinates pivot, int height, int width) {
         return x >= pivot.getX()
@@ -191,8 +190,9 @@ public class Board {
             && y < pivot.getY()+width;
     }
 
-    private boolean isPlayerOnItem(int x, int y, Coordinates sign){
+    private boolean isPlayerOnItemOrEnemy(int x, int y, Coordinates sign){
         return sign.getX() == x
                 && sign.getY() == y;
     }
+
 }
