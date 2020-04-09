@@ -127,7 +127,26 @@ public class Board {
                return false;
            }
         }
+        return true;
+    }
 
+    public boolean isEnemy(Coordinates coord) {
+        int x = player.getPosition().getX() + coord.getX();
+        int y = player.getPosition().getY() + coord.getY();
+
+        for (Enemy enemy : enemies) {
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
+            Coordinates pivot = enemy.getPivot();
+            
+           if (isCoordinatesInRange(x, y, pivot, height, width)) {
+               if(enemy instanceof Enemy) {
+                   this.player.setPoints(-10);
+                   System.out.println(this.player.getPoints());
+               }
+               return false;
+           }
+        }
         return true;
     }
 
