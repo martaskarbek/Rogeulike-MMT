@@ -48,10 +48,12 @@ public class Board {
         }
 
         for (Enemy enemy : enemies) {
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
             Coordinates pivot = enemy.getPivot();
 
-            for(int i = pivot.getX(); i<pivot.getX(); i++) {
-                for(int j = pivot.getY(); j< pivot.getY(); j++) {
+            for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
+                for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
                     output[i][j] = enemy.getSymbol();
                 }
             }
