@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 class Game extends KeyAdapter {
     
     Board board;
-    Board3 board3;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);

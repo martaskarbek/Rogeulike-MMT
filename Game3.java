@@ -12,11 +12,10 @@ public class Game3 extends KeyAdapter{
 
 
     public Game3(Player player) {
-        this.board3 = new Board3(player);
-        board3.printBoard3();
-    }
+            this.board3 = new Board3(player);
+            board3.printBoard3();
+        }
 
-  
 
     @Override
     public void keyPressed(KeyEvent event) {

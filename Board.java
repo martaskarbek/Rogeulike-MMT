@@ -69,7 +69,7 @@ public class Board {
         }
 
         System.out.println(print);
-        // System.out.println(this.player.getPoints());
+         System.out.println(this.player.getPoints());
         // for (Enemy enemy : enemies) {
         //     System.out.println(enemy.getHealthPoints());
         // }

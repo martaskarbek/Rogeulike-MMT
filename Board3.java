@@ -70,7 +70,7 @@ public class Board3 {
         }
 
         System.out.println(print);
-        // System.out.println(this.player.getPoints());
+        System.out.println(this.player.getPoints());
         // for (Enemy enemy : enemies) {
         //     System.out.println(enemy.getHealthPoints());
         // }
@@ -85,24 +85,24 @@ public class Board3 {
         Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, Emote.WALL1.getEmote());
         Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, Emote.WALL1.getEmote());
         Obstacle obstacle3 = new Obstacle(new Coordinates(0,0),1,30, Emote.WALL2.getEmote());
-        //Obstacle obstacle4 = new Obstacle(new Coordinates(0,this.columns-1),1,30, Emote.WALL2.getEmote());
-        //Obstacle obstacle5 = new Obstacle(new Coordinates(22,21), 1, 7, Emote.LAVA.getEmote());
-        //Obstacle obstacle6 = new Obstacle(new Coordinates(22,22), 1, 7, Emote.WALL4.getEmote());
-        //Obstacle obstacle7 = new Obstacle(new Coordinates(22,23), 2, 1, Emote.WALL3.getEmote());
-        //Obstacle obstacle8 = new Obstacle(new Coordinates(21,21), 6, 1, Emote.LAVA.getEmote());
-        //Obstacle obstacle9 = new Obstacle(new Coordinates(6, 6), 1, 1, Emote.KEY.getEmote());
+        Obstacle obstacle4 = new Obstacle(new Coordinates(0,this.columns-1),1,30, Emote.WALL2.getEmote());
+        Obstacle obstacle5 = new Obstacle(new Coordinates(22,21), 1, 7, Emote.LAVA.getEmote());
+        Obstacle obstacle6 = new Obstacle(new Coordinates(22,22), 1, 7, Emote.WALL4.getEmote());
+        Obstacle obstacle7 = new Obstacle(new Coordinates(22,23), 2, 1, Emote.WALL3.getEmote());
+        Obstacle obstacle8 = new Obstacle(new Coordinates(21,21), 6, 1, Emote.LAVA.getEmote());
+        Obstacle obstacle9 = new Obstacle(new Coordinates(6, 6), 1, 1, Emote.KEY.getEmote());
         
         
 
         this.obstacles.add(obstacle1);
         this.obstacles.add(obstacle2);
         this.obstacles.add(obstacle3);
-        //this.obstacles.add(obstacle4);
-        //this.obstacles.add(obstacle5);
-        //this.obstacles.add(obstacle6);
-        //this.obstacles.add(obstacle7);
-        //this.obstacles.add(obstacle8);
-        //this.obstacles.add(obstacle9);
+        this.obstacles.add(obstacle4);
+        this.obstacles.add(obstacle5);
+        this.obstacles.add(obstacle6);
+        this.obstacles.add(obstacle7);
+        this.obstacles.add(obstacle8);
+        this.obstacles.add(obstacle9);
     }
 
     private void generateItems(){
