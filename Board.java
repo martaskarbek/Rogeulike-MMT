@@ -88,8 +88,8 @@ public class Board {
     }
 
     private void generateItems(){
-        Candy candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getemote());
-        Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getemote());
+        Item candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getemote());
+        Item candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getemote());
         this.items.add(candy);
         this.items.add(candy1);
         
