@@ -57,4 +57,25 @@ class Game extends KeyAdapter {
         System. out. print("\033[H\033[2J");
         System. out. flush();
     }
+
+    public void mainMenu(){
+        this.board = new Board();
+        System.out.println("1. Play the game\n2. High Score\n0. Exit");
+        int option;
+        option = InputProvider.getInt("Enter a number to choose: ");
+        clearScreen();
+        System.out.println("");
+        switch (option) {
+            case 1:
+                board.printBoard();;
+                break;
+            case 2:
+                // High Score
+                break;
+            case 0:
+                // exitProgram();
+                break;
+
+        }
+    }
 }

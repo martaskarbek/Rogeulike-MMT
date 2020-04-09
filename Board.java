@@ -216,12 +216,4 @@ public class Board {
                 enemies.remove(enemy);
     }
 
-    // public boolean equals(Object obj) {
-    //     if (obj instanceof Obstacle) {
-    //         ArrayTest o = (ArrayTest) obj;
-    //         return o.i == this.i;
-    //     }
-    //     return false;
-    // }
-
 }
