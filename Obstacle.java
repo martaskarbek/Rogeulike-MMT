@@ -3,7 +3,8 @@ public class Obstacle {
     Coordinates pivot;
     int width;
     int height;
-    String sign = "__";
+    String sign = "##"; //top, bot bound
+    String sign2 = "#"; //left, right bound
     //---------- (0,0), width = 60, height = 1
     // |          (0,0), width=1, height = 30
 
@@ -27,5 +28,9 @@ public class Obstacle {
 
     public String getSymbol() {
         return this.sign;
+    }
+
+    public String getSymbol2() {
+        return this.sign2;
     }
 }

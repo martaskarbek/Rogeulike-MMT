@@ -30,8 +30,6 @@ public class Board {
         output[this.player.getPosition().getX()][this.player.getPosition().getY()] = this.player.getSign();
         // assign items from list
         // assign enemies for list
-<<<<<<< HEAD
-=======
 
         for (Obstacle obstacle : obstacles) {
             int width = obstacle.getWidth();
@@ -44,8 +42,7 @@ public class Board {
                 }
             }
         }
-
->>>>>>> 7d95ca1f9309f1615cf361e23854d956a6097c51
+        
         for (String[] row : output) {
             for (String square : row) {
                 // if i, j is equal to player position, then print+=" @"
@@ -66,12 +63,13 @@ public class Board {
     }
 
     private void generateObstacles() {
-        Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1);
-
+        Obstacle obstacle1 = new Obstacle(new Coordinates(1,0), 30, 1); //top bound
+        Obstacle obstacle2 = new Obstacle(new Coordinates(30,0),30,1); // bottom bound
         this.obstacles.add(obstacle1);
+        this.obstacles.add(obstacle2);
     }
 
-    public ArrayList<Obstacles> getObstacles() {
+    public ArrayList<Obstacle> getObstacles() {
         return this.obstacles;
     }
 
