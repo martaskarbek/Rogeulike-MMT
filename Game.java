@@ -13,19 +13,11 @@ class Game extends KeyAdapter {
 
 
 
-    public Game() {
-        Player player = new Player();
-
-        if (player.getPoints() < 20){
+    public Game(Player player) {
             this.board = new Board(player);
-            board.printBoard();}
-        else {
-            this.board3 = new Board3(player);
             board.printBoard();
         }
-    }
 
-  
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -61,8 +53,6 @@ class Game extends KeyAdapter {
         board.printBoard();
         // print board again
     }
-
-    
 
     public static void clearScreen() {
         System. out. print("\033[H\033[2J");

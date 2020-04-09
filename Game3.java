@@ -3,7 +3,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Game3 extends KeyAdapter{
-    
     Board3 board3;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
@@ -12,8 +11,8 @@ public class Game3 extends KeyAdapter{
 
 
 
-    public Game3() {
-        //this.board3 = new Board3(player);
+    public Game3(Player player) {
+        this.board3 = new Board3(player);
         board3.printBoard3();
     }
 
