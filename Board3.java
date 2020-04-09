@@ -108,9 +108,11 @@ public class Board3 {
     private void generateItems(){
         Candy candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getEmote());
         Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getEmote());
+        Candy candy2 = new Candy(new Coordinates(7, 12), Emote.CANDY.getEmote());
 
         this.items.add(candy);
         this.items.add(candy1);
+        this.items.add(candy2);
         
 
     }
