@@ -2,7 +2,7 @@ public class Player {
     private int points;
     private int health = 200;
     Coordinates position;
-    private String sign = " @";
+    private String sign = Emote.PLAYER.getEmote();
 
     public Player(){
         this.position = new Coordinates(5, 5);

@@ -4,14 +4,14 @@ import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     
-    Board board;
+    Board2 board;
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
-        this.board = new Board();
+        this.board = new Board2();
         board.printBoard();
     }
 
