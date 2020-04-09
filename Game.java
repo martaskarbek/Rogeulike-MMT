@@ -11,6 +11,8 @@ class Game extends KeyAdapter {
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
+        // this.board = new Board();
+        // board.printBoard();
         mainMenu();
     }
 
@@ -23,22 +25,22 @@ class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 // System.out.println(board.canPlayerMove(this.w));
-                if (board.canPlayerMove(this.w) && board.isEnemy(this.w)) {
+                if (board.canPlayerMove(this.w)) {
                     board.getPlayer().move(this.w);
                 }
                 break;
             case 's':
-                if (board.canPlayerMove(this.s) && board.isEnemy(this.s)) {
+                if (board.canPlayerMove(this.s)) {
                     board.getPlayer().move(this.s);
                 }
                 break;
             case 'a':
-                if (board.canPlayerMove(this.a) && board.isEnemy(this.a)){
+                if (board.canPlayerMove(this.a)){
                     board.getPlayer().move(this.a);
                 }
                 break;
             case 'd':
-                if (board.canPlayerMove(this.d) && board.isEnemy(this.d)) {
+                if (board.canPlayerMove(this.d)) {
                     board.getPlayer().move(this.d);
                 }
                 break;   

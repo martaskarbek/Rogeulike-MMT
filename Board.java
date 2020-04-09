@@ -1,7 +1,4 @@
-
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList;;
 
 public class Board {
     private final int rows = 30, columns = 30;
@@ -9,24 +6,18 @@ public class Board {
     ArrayList<Obstacle> obstacles;
     ArrayList<Enemy> enemies;
     ArrayList<Item> inventory;
-
-    // ArrayList<Item> items;
-    // ArrayList<Enemy> enemy;
+    ArrayList<Item> items;
 
     public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
         this.enemies = new ArrayList<>();
         this.inventory = new ArrayList<>();
+        this.items = new ArrayList<>();
         generateObstacles();
+        generateItems();
         generateEnemies();
-        // int rows = 30, columns = 70;
-        // gameBoard = new Square[rows][columns];
-        // for (int row = 0; row < rows; row++) {
-        //     for (int column = 0; column < columns; column++) {
-        //         gameBoard[row][column] = new Square(bufferMap[row][column]);
-        //     }
-        // }
+        
     }
 
     public void printBoard() {
@@ -34,10 +25,7 @@ public class Board {
         String print = "";
 
         output[this.player.getPosition().getX()][this.player.getPosition().getY()] = this.player.getSign();
-        // assign items from list
-        // assign enemies for list
-
-        
+ 
         for (Obstacle obstacle : obstacles) {
             int width = obstacle.getWidth();
             int height = obstacle.getHeight();
@@ -50,16 +38,14 @@ public class Board {
             }
         }
 
-        for (Enemy enemy : enemies) {
-            int width = enemy.getWidth();
-            int height = enemy.getHeight();
-            Coordinates pivot = enemy.getPivot();
+        for (Item item : items) {
+            Coordinates sign = item.getItem();
+            output[sign.getX()][sign.getY()] = item.getSign();
+        }
 
-            for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
-                for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
-                    output[i][j] = enemy.getSymbol();
-                }
-            }
+        for (Enemy enemy : enemies) {
+            Coordinates sign = enemy.getEnemy();
+            output[sign.getX()][sign.getY()] = enemy.getSign();
         }
         
         for (String[] row : output) {
@@ -151,7 +137,6 @@ public class Board {
             int width = obstacle.getWidth();
             int height = obstacle.getHeight();
             Coordinates pivot = obstacle.getPivot();
-            // Item key = inventory.get(0);
 
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
@@ -184,13 +169,10 @@ public class Board {
         }
 
         for (Enemy enemy : enemies) {
-            int width = enemy.getWidth();
-            int height = enemy.getHeight();
-            Coordinates pivot = enemy.getPivot();
+            Coordinates sign = enemy.getEnemy();
             
-            if (isCoordinatesInRange(x, y, pivot, height, width)) {
+            if (isPlayerOnItemOrEnemy(x, y, sign)) {
                 if(enemy instanceof Spider) {
-
                     interactionWithEnemy(enemy);
                 }
                 if(enemy instanceof Vampire) {

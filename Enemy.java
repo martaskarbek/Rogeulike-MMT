@@ -8,25 +8,16 @@ public abstract class Enemy {
 
     public Enemy(Coordinates enemy, String sign, int health, int attack) {
         this.enemy = enemy;
-
         this.sign = sign;
         this.health = health;
         this.attack = attack;
     }
 
-    public int getWidth() {
-        return this.width;
+    public Coordinates getEnemy() {
+        return this.enemy;
     }
 
-    public int getHeight() {
-        return this.height;
-    }
-
-    public Coordinates getPivot(){
-        return this.pivot;
-    }
-
-    public String getSymbol() {
+    public String getSign(){
         return this.sign;
     }
 
