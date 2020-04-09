@@ -1,11 +1,23 @@
 
 public abstract class Enemy {
     Coordinates pivot;
+    int width;
+    int height;
     String sign;
 
-    public Enemy(Coordinates pivot, String sign) {
+    public Enemy(Coordinates pivot, int width, int height, String sign) {
+        this.width = width;
+        this.height = height;
         this.pivot = pivot;
         this.sign = sign;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public Coordinates getPivot(){
