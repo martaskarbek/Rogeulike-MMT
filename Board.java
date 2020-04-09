@@ -6,6 +6,7 @@ public class Board {
     private final int rows = 30, columns = 30;
     Player player;
     ArrayList<Obstacle> obstacles;
+    ArrayList<Enemy> enemies;
 
     // ArrayList<Item> items;
     // ArrayList<Enemy> enemy;
@@ -13,7 +14,9 @@ public class Board {
     public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
+        this.enemies = new ArrayList<>();
         generateObstacles();
+        generateEnemies();
         // int rows = 30, columns = 70;
         // gameBoard = new Square[rows][columns];
         // for (int row = 0; row < rows; row++) {
@@ -40,6 +43,16 @@ public class Board {
             for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
                 for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
                     output[i][j] = obstacle.getSymbol();
+                }
+            }
+        }
+
+        for (Enemy enemy : enemies) {
+            Coordinates pivot = enemy.getPivot();
+
+            for(int i = pivot.getX(); i<pivot.getX(); i++) {
+                for(int j = pivot.getY(); j< pivot.getY(); j++) {
+                    output[i][j] = enemy.getSymbol();
                 }
             }
         }
@@ -71,13 +84,24 @@ public class Board {
         Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
         Obstacle obstacle4 = new Obstacle(new Coordinates(0,0),1,30, "#");
         Obstacle obstacle5 = new Obstacle(new Coordinates(0,this.columns-1),1,30, "#");
-
         this.obstacles.add(obstacle1);
         this.obstacles.add(obstacle2);
         this.obstacles.add(obstacle3);
         this.obstacles.add(obstacle4);
         this.obstacles.add(obstacle5);
+        
 
+    }
+
+    private void generateEnemies() {
+        Enemy ghost = new Ghost(new Coordinates(10, 17), 1, 1, Emote.GHOST.getemote());
+        Enemy vampire = new Ghost(new Coordinates(20, 7), 1 , 1, Emote.MANVAMPIRE.getemote());
+        Enemy spider = new Ghost(new Coordinates(16, 4), 1, 1, Emote.SPIDER.getemote());
+        Enemy zombie = new Ghost(new Coordinates(1, 23), 1, 1, Emote.WOMANZOMBIE.getemote());
+        this.enemies.add(ghost);
+        this.enemies.add(vampire);
+        this.enemies.add(spider);
+        this.enemies.add(zombie);
     }
 
     public ArrayList<Obstacle> getObstacles() {
