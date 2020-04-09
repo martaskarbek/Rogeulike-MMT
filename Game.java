@@ -23,22 +23,22 @@ class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 // System.out.println(board.canPlayerMove(this.w));
-                if (board.canPlayerMove(this.w)) {
+                if (board.canPlayerMove(this.w) && board.isEnemy(this.w)) {
                     board.getPlayer().move(this.w);
                 }
                 break;
             case 's':
-                if (board.canPlayerMove(this.s)) {
+                if (board.canPlayerMove(this.s) && board.isEnemy(this.s)) {
                     board.getPlayer().move(this.s);
                 }
                 break;
             case 'a':
-                if (board.canPlayerMove(this.a)){
+                if (board.canPlayerMove(this.a) && board.isEnemy(this.a)){
                     board.getPlayer().move(this.a);
                 }
                 break;
             case 'd':
-                if (board.canPlayerMove(this.d)) {
+                if (board.canPlayerMove(this.d) && board.isEnemy(this.d)) {
                     board.getPlayer().move(this.d);
                 }
                 break;   

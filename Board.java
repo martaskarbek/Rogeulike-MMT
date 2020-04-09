@@ -1,23 +1,32 @@
 
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     private final int rows = 30, columns = 30;
     Player player;
     ArrayList<Obstacle> obstacles;
-    ArrayList<Item> items;
     ArrayList<Enemy> enemies;
     ArrayList<Item> inventory;
+
+    // ArrayList<Item> items;
+    // ArrayList<Enemy> enemy;
 
     public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
-        this.items = new ArrayList<>();
         this.enemies = new ArrayList<>();
         this.inventory = new ArrayList<>();
         generateObstacles();
-        generateItems();
         generateEnemies();
+        // int rows = 30, columns = 70;
+        // gameBoard = new Square[rows][columns];
+        // for (int row = 0; row < rows; row++) {
+        //     for (int column = 0; column < columns; column++) {
+        //         gameBoard[row][column] = new Square(bufferMap[row][column]);
+        //     }
+        // }
     }
 
     public void printBoard() {
@@ -41,18 +50,21 @@ public class Board {
             }
         }
 
-        for (Item item : items) {
-            Coordinates sign = item.getItem();
-            output[sign.getX()][sign.getY()] = item.getSign();
-        }
-
         for (Enemy enemy : enemies) {
-            Coordinates sign = enemy.getEnemy();
-            output[sign.getX()][sign.getY()] = enemy.getSign();
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
+            Coordinates pivot = enemy.getPivot();
+
+            for(int i = pivot.getX(); i<pivot.getX()+height; i++) {
+                for(int j = pivot.getY(); j< pivot.getY()+width; j++) {
+                    output[i][j] = enemy.getSymbol();
+                }
+            }
         }
         
         for (String[] row : output) {
             for (String square : row) {
+                // if i, j is equal to player position, then print+=" @"
                 if(square == null) {
                     print += " .";
                     continue;
@@ -63,6 +75,7 @@ public class Board {
         }
 
         System.out.println(print);
+
         // System.out.println(this.player.getPoints());
         for (Enemy enemy : enemies) {
             System.out.println(enemy.getHealth());
@@ -76,6 +89,7 @@ public class Board {
     }
 
     private void generateObstacles() {
+
         Obstacle wall1 = new Obstacle(new Coordinates(0,0), 30, 1, Emote.WALL1.getEmote());
         Obstacle wall2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, Emote.WALL1.getEmote());
         Obstacle wall3 = new Obstacle(new Coordinates(0,0),1,30, Emote.WALL2.getEmote());
@@ -120,6 +134,7 @@ public class Board {
         return this.obstacles;
     }
 
+
     public ArrayList<Item> getItems() {
         return this.items;
     }
@@ -150,6 +165,7 @@ public class Board {
             
             }
         }
+
         for (Item item : items) {
             Coordinates sign = item.getItem();
             
@@ -168,10 +184,13 @@ public class Board {
         }
 
         for (Enemy enemy : enemies) {
-            Coordinates sign = enemy.getEnemy();
+            int width = enemy.getWidth();
+            int height = enemy.getHeight();
+            Coordinates pivot = enemy.getPivot();
             
-            if (isPlayerOnItemOrEnemy(x, y, sign)) {
+            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                 if(enemy instanceof Spider) {
+
                     interactionWithEnemy(enemy);
                 }
                 if(enemy instanceof Vampire) {
@@ -182,6 +201,7 @@ public class Board {
                 }
                 if(enemy instanceof Zombie) {
                     interactionWithEnemy(enemy);
+
                 }
                 return false;
             }
@@ -196,6 +216,7 @@ public class Board {
             && y < pivot.getY()+width;
     }
 
+
     private boolean isPlayerOnItemOrEnemy(int x, int y, Coordinates sign){
         return sign.getX() == x
                 && sign.getY() == y;
@@ -209,5 +230,4 @@ public class Board {
             if(enemy.getHealth() == 0)
                 enemies.remove(enemy);
     }
-
 }
