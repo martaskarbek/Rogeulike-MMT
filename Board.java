@@ -6,14 +6,15 @@ public class Board {
     private final int rows = 30, columns = 30;
     Player player;
     ArrayList<Obstacle> obstacles;
-
-    // ArrayList<Item> items;
+    ArrayList<Item> items;
     // ArrayList<Enemy> enemy;
 
     public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
+        this.items = new ArrayList<>();
         generateObstacles();
+        generateItems();
         // int rows = 30, columns = 70;
         // gameBoard = new Square[rows][columns];
         // for (int row = 0; row < rows; row++) {
@@ -43,6 +44,11 @@ public class Board {
                 }
             }
         }
+
+        for (Item item : items) {
+            Coordinates sign = item.getItem();
+            output[sign.getX()][sign.getY()] = item.getSign();
+        }
         
         for (String[] row : output) {
             for (String square : row) {
@@ -64,8 +70,6 @@ public class Board {
     }
 
     private void generateObstacles() {
-        // public final String fire = "\ud83d\udd25"
-        // Emoticons.fire
         Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##"); //top bound
         Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##"); // bottom bound
         Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
@@ -77,11 +81,21 @@ public class Board {
         this.obstacles.add(obstacle3);
         this.obstacles.add(obstacle4);
         this.obstacles.add(obstacle5);
+    }
 
+    private void generateItems(){
+        Candy candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getemote());
+        Candy candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getemote());
+        this.items.add(candy);
+        this.items.add(candy1);
     }
 
     public ArrayList<Obstacle> getObstacles() {
         return this.obstacles;
+    }
+
+    public ArrayList<Item> getItems() {
+        return this.items;
     }
 
     public boolean canPlayerMove(Coordinates coord) {
@@ -102,6 +116,19 @@ public class Board {
            }
         }
 
+        for (Item item : items) {
+            Coordinates sign = item.getItem();
+            
+           if (isPlayerOnItem(x, y, sign)) {
+               if(item instanceof Candy) {
+                   this.player.setPoints(10);
+                   items.remove(item);
+                   System.out.println(this.player.getPoints());
+               }
+               return false;
+           }
+        }
+
         return true;
     }
 
@@ -110,5 +137,10 @@ public class Board {
             && x < pivot.getX()+height 
             && y >= pivot.getY() 
             && y < pivot.getY()+width;
+    }
+
+    private boolean isPlayerOnItem(int x, int y, Coordinates sign){
+        return sign.getX() == x
+                && sign.getY() == y;
     }
 }
