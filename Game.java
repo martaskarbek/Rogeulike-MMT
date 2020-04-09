@@ -26,7 +26,10 @@ class Game extends KeyAdapter {
 
         switch(ch) {
             case 'w':
-                board.getPlayer().move(this.w);
+                // System.out.println(board.canPlayerMove(this.w));
+                if (board.canPlayerMove(this.w)) {
+                    board.getPlayer().move(this.w);
+                }
                 break;
             case 's':
                 board.getPlayer().move(this.s);
