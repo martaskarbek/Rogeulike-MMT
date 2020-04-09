@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Board {
     private final int rows = 30, columns = 30;
@@ -15,13 +14,6 @@ public class Board {
         this.items = new ArrayList<>();
         generateObstacles();
         generateItems();
-        // int rows = 30, columns = 70;
-        // gameBoard = new Square[rows][columns];
-        // for (int row = 0; row < rows; row++) {
-        //     for (int column = 0; column < columns; column++) {
-        //         gameBoard[row][column] = new Square(bufferMap[row][column]);
-        //     }
-        // }
     }
 
     public void printBoard() {
@@ -52,7 +44,6 @@ public class Board {
         
         for (String[] row : output) {
             for (String square : row) {
-                // if i, j is equal to player position, then print+=" @"
                 if(square == null) {
                     print += " .";
                     continue;
@@ -70,11 +61,12 @@ public class Board {
     }
 
     private void generateObstacles() {
-        Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##"); //top bound
-        Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##"); // bottom bound
-        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
+        Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##");
+        Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##");
         Obstacle obstacle4 = new Obstacle(new Coordinates(0,0),1,30, "#");
         Obstacle obstacle5 = new Obstacle(new Coordinates(0,this.columns-1),1,30, "#");
+        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25\ud83d\udd25");
+        
 
         this.obstacles.add(obstacle1);
         this.obstacles.add(obstacle2);
@@ -125,7 +117,7 @@ public class Board {
                    items.remove(item);
                    System.out.println(this.player.getPoints());
                }
-               return false;
+               return true;
            }
         }
 

@@ -8,14 +8,6 @@ public abstract class Item {
         this.sign = sign;
     }
 
-    // public int getX() {
-    //     return this.x;
-    // }
-
-    // public int getY() {
-    //     return this.y;
-    // }
-
     public Coordinates getItem(){
         return this.item;
     }
