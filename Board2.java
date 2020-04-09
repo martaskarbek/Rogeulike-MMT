@@ -146,7 +146,7 @@ public class Board2 {
                if(item instanceof Candy) {
                    this.player.setPoints(10);
                    items.remove(item);
-                   System.out.println(this.player.getHealth());
+                //    System.out.println(this.player.getHealth());
                }
                if(item instanceof Key) {
                    items.remove(item);

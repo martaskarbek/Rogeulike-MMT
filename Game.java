@@ -15,13 +15,13 @@ class Game extends KeyAdapter {
     public Game() {
         this.board = new Board2();
         this.board2 = new Board();
-        int playerPts = playerPoints.getPoints();
-        // board.printBoard();
-        if(playerPts == 0){
-            board.printBoard();
-        } else if(playerPts == 10) {
-            board2.printBoard();
-        }
+        // int playerPts = playerPoints.getPoints();
+        board.printBoard();
+        // if(playerPts == 0){
+        //     board.printBoard();
+        // } else if(playerPts == 10) {
+        //     board2.printBoard();
+        // }
     }
 
     @Override
