@@ -7,7 +7,7 @@ public class Coursebook extends Item {
 
     @Override
     public void changePoints(Player player) {
-        player.points += 3;
+        // player.points += 3;
     }
 
 }

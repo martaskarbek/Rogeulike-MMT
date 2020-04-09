@@ -7,7 +7,7 @@ public class Tutorial extends Item {
 
     @Override
     public void changePoints(Player player) {
-        player.points += 2;
+        // player.points += 2;
     }
 
 }

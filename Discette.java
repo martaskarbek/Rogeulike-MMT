@@ -6,7 +6,7 @@ public class Discette extends Item{
 
     @Override
     public void changePoints(Player player) {
-        player.points += 1;
+        // player.points += 1;
     }
 
     

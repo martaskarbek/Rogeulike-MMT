@@ -1,6 +1,6 @@
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class Board {
     private final int rows = 30, columns = 30;
@@ -10,17 +10,10 @@ public class Board {
     // ArrayList<Item> items;
     // ArrayList<Enemy> enemy;
 
-    public Board(String[][] bufferMap) {
+    public Board() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
         generateObstacles();
-        // int rows = 30, columns = 70;
-        // gameBoard = new Square[rows][columns];
-        // for (int row = 0; row < rows; row++) {
-        //     for (int column = 0; column < columns; column++) {
-        //         gameBoard[row][column] = new Square(bufferMap[row][column]);
-        //     }
-        // }
     }
 
     public void printBoard() {
@@ -63,20 +56,32 @@ public class Board {
         return this.player;
     }
 
+    // public void RandomIntGenerator(){
+        
+    //     Random random = new Random();
+    //     this.x = random.nextInt(10);
+    //     this.y = random.nextInt(10);            
+    //     }
+
     private void generateObstacles() {
         // public final String fire = "\ud83d\udd25"
         // Emoticons.fire
+        Random random = new Random();
+        int x = random.nextInt(10);
+        int y = random.nextInt(10);
         Obstacle obstacle1 = new Obstacle(new Coordinates(0,0), 30, 1, "##"); //top bound
         Obstacle obstacle2 = new Obstacle(new Coordinates(this.rows -1,0),30,1, "##"); // bottom bound
-        Obstacle obstacle3 = new Lava(new Coordinates(8,8),2,2, "\ud83d\udd25");
+        Obstacle obstacle3 = new Lava(new Coordinates(7,7),2,2, "\ud83d\udd25\ud83d\udd25");
         Obstacle obstacle4 = new Obstacle(new Coordinates(0,0),1,30, "#");
         Obstacle obstacle5 = new Obstacle(new Coordinates(0,this.columns-1),1,30, "#");
+        Obstacle obstacle6 = new Lava(new Coordinates(2, 2), 3, 3, "\ud83d\udd25\ud83d\udd25");
 
         this.obstacles.add(obstacle1);
         this.obstacles.add(obstacle2);
         this.obstacles.add(obstacle3);
         this.obstacles.add(obstacle4);
         this.obstacles.add(obstacle5);
+        this.obstacles.add(obstacle6);
 
     }
 
@@ -95,8 +100,8 @@ public class Board {
             
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
-                   this.player.setPoints(-10);
-                   System.out.println(this.player.getPoints());
+                   this.player.setHealth(-20);
+                   System.out.println(this.player.getHealth());
                }
                return false;
            }

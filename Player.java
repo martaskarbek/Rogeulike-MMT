@@ -1,5 +1,6 @@
 public class Player {
     private int points;
+    private int health = 100;
     Coordinates position;
     private String sign = " @";
 
@@ -30,5 +31,13 @@ public class Player {
 
     public void setPoints(int points) {
         this.points += points;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health += health;
     }
 }
