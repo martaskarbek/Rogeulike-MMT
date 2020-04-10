@@ -1,4 +1,4 @@
-import java.util.ArrayList;;
+import java.util.ArrayList;
 
 public class Board {
     private final int rows = 30, columns = 30;
@@ -164,7 +164,6 @@ public class Board {
                     return true;
                  }
                return false;
-            
             }
         }
 
@@ -172,22 +171,7 @@ public class Board {
             Coordinates sign = item.getItem();
             
            if (isPlayerOnItemOrEnemy(x, y, sign)) {
-               if(item instanceof Candy) {
-                    this.player.setPoints(10);
-                    items.remove(item);
-                }
-                if(item instanceof Key) {
-                    this.inventory.add(item);
-                    items.remove(item);
-                }
-                if(item instanceof Sword) {
-                    player.setAttack(5);
-                    items.remove(item);
-                }
-                if(item instanceof Potion) {
-                    player.setHealth(25);
-                    items.remove(item);
-                }
+               item.setStats(player, items, inventory);
                return true;
             }
         }
@@ -196,19 +180,7 @@ public class Board {
             Coordinates sign = enemy.getEnemy();
             
             if (isPlayerOnItemOrEnemy(x, y, sign)) {
-                if(enemy instanceof Spider) {
-                    interactionWithEnemy(enemy);
-                }
-                if(enemy instanceof Vampire) {
-                    interactionWithEnemy(enemy);
-                }
-                if(enemy instanceof Ghost) {
-                    interactionWithEnemy(enemy);
-                }
-                if(enemy instanceof Zombie) {
-                    interactionWithEnemy(enemy);
-
-                }
+                interactionWithEnemy(enemy);
                 return false;
             }
         }
