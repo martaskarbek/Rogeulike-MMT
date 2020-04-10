@@ -21,7 +21,6 @@ class Game extends KeyAdapter {
         clearScreen();
         switch (ch) {
             case 'w':
-                // System.out.println(board.canPlayerMove(this.w));
                 if (board.canPlayerMove(this.w)) {
                     board.getPlayer().move(this.w);
                 }

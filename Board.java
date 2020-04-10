@@ -7,6 +7,7 @@ public class Board {
     private  ArrayList<Enemy> enemies;
     private ArrayList<Item> inventory;
     private ArrayList<Item> items;
+    
 
     public Board() {
         this.player = new Player();
@@ -20,12 +21,41 @@ public class Board {
     }
 
     public void printBoard() {
-        
-        String[][] output = new String[rows][columns];
         String print = "";
-
+        String[][] output = new String[rows][columns];
         output[this.player.getPosition().getX()][this.player.getPosition().getY()] = this.player.getSign();
-        
+        printItems(output);
+        printEnemies(output);
+        printObstacles(output);
+        for (String[] row : output) {
+            for (String square : row) {
+                if(square == null) {
+                    print += " .";
+                    continue;
+                }
+                print+=square;
+            }
+            print+="\n";
+        }
+        System.out.println(print);
+        printAttributes();
+    }
+
+    public void printItems(String[][] output){
+        for (Item item : items) {
+            Coordinates sign = item.getItem();
+            output[sign.getX()][sign.getY()] = item.getSign();
+        }
+    }
+
+    public void printEnemies(String[][] output){
+        for (Enemy enemy : enemies) {
+            Coordinates sign = enemy.getEnemy();
+            output[sign.getX()][sign.getY()] = enemy.getSign();
+        }
+    }
+
+    public void printObstacles(String[][] output){
         for (Obstacle obstacle : obstacles) {
             int width = obstacle.getWidth();
             int height = obstacle.getHeight();
@@ -37,34 +67,14 @@ public class Board {
                 }
             }
         }
+    }
 
-        for (Item item : items) {
-            Coordinates sign = item.getItem();
-            output[sign.getX()][sign.getY()] = item.getSign();
-        }
-
-        for (Enemy enemy : enemies) {
-            Coordinates sign = enemy.getEnemy();
-            output[sign.getX()][sign.getY()] = enemy.getSign();
-        }
-        
-        for (String[] row : output) {
-            for (String square : row) {
-                if(square == null) {
-                    print += " .";
-                    continue;
-                }
-                print+=square;
-            }
-            print+="\n";
-        }
-
-        System.out.println(print);
+    public void printAttributes(){
         System.out.println("Attack: " + this.player.getAttack());
         System.out.println("Health: " + this.player.getHealth());
         System.out.println("Points: " + this.player.getPoints());
     }
-
+    
     public Player getPlayer() {
         return this.player;
     }
@@ -95,8 +105,7 @@ public class Board {
         this.obstacles.add(wall7);
         this.obstacles.add(wall8);
         this.obstacles.add(wall9);
-        this.obstacles.add(wall10);
-        
+        this.obstacles.add(wall10);  
     }
 
     private void generateItems(){
@@ -203,6 +212,7 @@ public class Board {
                 return false;
             }
         }
+
         return true;
     }
 

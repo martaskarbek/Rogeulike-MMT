@@ -1,6 +1,4 @@
-
 public abstract class Enemy {
-
     int health;
     int attack;
     Coordinates enemy;
