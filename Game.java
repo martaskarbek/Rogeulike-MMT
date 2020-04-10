@@ -49,6 +49,10 @@ class Game extends KeyAdapter {
         // System.out.println(board.getPlayer().toString());
 
         board.printBoard(player);
+        if (player.getPoints() >= 20) {
+            clearScreen();
+            board2.printBoard2(player);
+        }
         // print board again
     }
 
