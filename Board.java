@@ -2,14 +2,14 @@ import java.util.ArrayList;;
 
 public class Board {
     private final int rows = 30, columns = 30;
-    private Player player;
+    //private Player player;
     private ArrayList<Obstacle> obstacles;
     private  ArrayList<Enemy> enemies;
     private ArrayList<Item> inventory;
     private ArrayList<Item> items;
 
     public Board() {
-        this.player = new Player();
+        //this.player = new Player();
         this.obstacles = new ArrayList<>();
         this.enemies = new ArrayList<>();
         this.inventory = new ArrayList<>();
@@ -19,12 +19,12 @@ public class Board {
         generateEnemies();   
     }
 
-    public void printBoard() {
+    public void printBoard(Player player) {
         
         String[][] output = new String[rows][columns];
         String print = "";
 
-        output[this.player.getPosition().getX()][this.player.getPosition().getY()] = this.player.getSign();
+        output[player.getPosition().getX()][player.getPosition().getY()] = player.getSign();
         
         for (Obstacle obstacle : obstacles) {
             int width = obstacle.getWidth();
@@ -60,13 +60,13 @@ public class Board {
         }
 
         System.out.println(print);
-        System.out.println("Attack: " + this.player.getAttack());
-        System.out.println("Health: " + this.player.getHealth());
-        System.out.println("Points: " + this.player.getPoints());
+        System.out.println("Attack: " + player.getAttack());
+        System.out.println("Health: " + player.getHealth());
+        System.out.println("Points: " + player.getPoints());
     }
 
-    public Player getPlayer() {
-        return this.player;
+    public Player getPlayer(Player player) {
+        return player;
     }
 
     private void generateObstacles() {
@@ -132,7 +132,7 @@ public class Board {
         return this.inventory;
     }
 
-    public boolean canPlayerMove(Coordinates coord) {
+    public boolean canPlayerMove(Coordinates coord, Player player) {
         int x = player.getPosition().getX() + coord.getX();
         int y = player.getPosition().getY() + coord.getY();
 
@@ -143,7 +143,7 @@ public class Board {
 
            if (isCoordinatesInRange(x, y, pivot, height, width)) {
                if(obstacle instanceof Lava) {
-                   this.player.setHealth(-10);
+                   player.setHealth(-10);
                 }
             
                 if(obstacle instanceof Door && !inventory.isEmpty()) {
@@ -159,7 +159,7 @@ public class Board {
             
            if (isPlayerOnItemOrEnemy(x, y, sign)) {
                if(item instanceof Candy) {
-                    this.player.setPoints(10);
+                    player.setPoints(10);
                     items.remove(item);
                 }
                 if(item instanceof Key) {
@@ -183,16 +183,16 @@ public class Board {
             
             if (isPlayerOnItemOrEnemy(x, y, sign)) {
                 if(enemy instanceof Spider) {
-                    interactionWithEnemy(enemy);
+                    interactionWithEnemy(enemy, player);
                 }
                 if(enemy instanceof Vampire) {
-                    interactionWithEnemy(enemy);
+                    interactionWithEnemy(enemy, player);
                 }
                 if(enemy instanceof Ghost) {
-                    interactionWithEnemy(enemy);
+                    interactionWithEnemy(enemy, player);
                 }
                 if(enemy instanceof Zombie) {
-                    interactionWithEnemy(enemy);
+                    interactionWithEnemy(enemy, player);
 
                 }
                 return false;
@@ -213,8 +213,8 @@ public class Board {
                 && sign.getY() == y;
     }
 
-    public void interactionWithEnemy(Enemy enemy) {
-        this.player.setHealth(-enemy.getAttack());
+    public void interactionWithEnemy(Enemy enemy, Player player) {
+        player.setHealth(-enemy.getAttack());
         enemy.setHealth(-player.getAttack());
             if(enemy.getHealth() == 0)
                 enemies.remove(enemy);

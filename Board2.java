@@ -20,7 +20,7 @@ public class Board2 {
         
     }
 
-    public void printBoard() {
+    public void printBoard2(Player player) {
         String[][] output = new String[rows][columns];
         String print = "";
 

@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 class Game extends KeyAdapter {
     
     static Board board;
-    Player player;
+    Player player = new Player();
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
@@ -24,29 +24,29 @@ class Game extends KeyAdapter {
         switch (ch) {
             case 'w':
                 // System.out.println(board.canPlayerMove(this.w));
-                if (board.canPlayerMove(this.w)) {
-                    board.getPlayer().move(this.w);
+                if (board.canPlayerMove(this.w, player)) {
+                    board.getPlayer(player).move(this.w);
                 }
                 break;
             case 's':
-                if (board.canPlayerMove(this.s)) {
-                    board.getPlayer().move(this.s);
+                if (board.canPlayerMove(this.s, player)) {
+                    board.getPlayer(player).move(this.s);
                 }
                 break;
             case 'a':
-                if (board.canPlayerMove(this.a)) {
-                    board.getPlayer().move(this.a);
+                if (board.canPlayerMove(this.a, player)) {
+                    board.getPlayer(player).move(this.a);
                 }
                 break;
             case 'd':
-                if (board.canPlayerMove(this.d)) {
-                    board.getPlayer().move(this.d);
+                if (board.canPlayerMove(this.d, player)) {
+                    board.getPlayer(player).move(this.d);
                 }
                 break;
         }
         // System.out.println(board.getPlayer().toString());
 
-        board.printBoard();
+        board.printBoard(player);
         // print board again
     }
 
@@ -55,7 +55,7 @@ class Game extends KeyAdapter {
         System.out.flush();
     }
 
-    public static void mainMenu() {
+    public void mainMenu() {
         board = new Board();
         System.out.println("1. Play the game\n2. High Score\n0. Exit");
         int option;
@@ -64,7 +64,7 @@ class Game extends KeyAdapter {
         System.out.println("");
         switch (option) {
             case 1:
-                board.printBoard();
+                board.printBoard(player);
                 break;
             case 2:
                 // High Score
