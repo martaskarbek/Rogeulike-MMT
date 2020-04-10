@@ -51,8 +51,9 @@ class Game extends KeyAdapter {
         board.printBoard(player);
         if (player.getPoints() >= 20) {
             clearScreen();
-            board2.printBoard2(player);
-            nextLevel();
+            System.out.println("See you soon!");
+            //board2.printBoard2(player);
+            //nextLevel();
 
             
         }
