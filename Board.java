@@ -78,6 +78,9 @@ public class Board {
         Obstacle wall6 = new Obstacle(new Coordinates(22,23), 2, 1, Emote.WALL3.getEmote());
         Obstacle wall7 = new Obstacle(new Coordinates(21, 1), 5, 1, Emote.WALL1.getEmote());
         Obstacle wall8 = new Obstacle(new Coordinates(23, 6), 1, 6, Emote.WALL1.getEmote());
+        Obstacle wall9 = new Obstacle(new Coordinates(1, 21), 1, 6, Emote.WALL1.getEmote());
+        Obstacle wall10 = new Obstacle(new Coordinates(6, 23), 6, 1, Emote.WALL1.getEmote());
+        
         Obstacle lava = new Lava(new Coordinates(22,21), 1, 7, Emote.LAVA.getEmote());
         Obstacle lava1 = new Lava(new Coordinates(21,21), 6, 1, Emote.LAVA.getEmote());
         Obstacle door = new Door(new Coordinates(21,27), 2, 1, Emote.DOORS.getEmote());
@@ -92,6 +95,9 @@ public class Board {
         this.obstacles.add(door);
         this.obstacles.add(wall7);
         this.obstacles.add(wall8);
+        this.obstacles.add(wall9);
+        this.obstacles.add(wall10);
+        
     }
 
     private void generateItems(){
@@ -99,7 +105,7 @@ public class Board {
         Item candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getEmote());
         Item candy2 = new Candy(new Coordinates(26, 26), Emote.CANDY.getEmote());
         Item key = new Key(new Coordinates(26, 3), Emote.KEY.getEmote());
-        Item sword = new Sword(new Coordinates(15, 15), Emote.SWORD.getEmote());
+        Item sword = new Sword(new Coordinates(3, 24), Emote.SWORD.getEmote());
         Item potion = new Potion(new Coordinates(18, 23), Emote.POTION.getEmote());
         this.items.add(candy);
         this.items.add(candy1);
@@ -113,7 +119,7 @@ public class Board {
         Enemy ghost = new Ghost(new Coordinates(10, 17), Emote.GHOST.getEmote(), 20, 5);
         Enemy vampire = new Vampire(new Coordinates(22, 5), Emote.MANVAMPIRE.getEmote(), 20, 15);
         Enemy spider = new Spider(new Coordinates(16, 4), Emote.SPIDER.getEmote(), 20, 5);
-        Enemy zombie = new Zombie(new Coordinates(1, 23), Emote.WOMANZOMBIE.getEmote(), 20, 10);
+        Enemy zombie = new Zombie(new Coordinates(6, 22), Emote.WOMANZOMBIE.getEmote(), 20, 10);
         this.enemies.add(ghost);
         this.enemies.add(vampire);
         this.enemies.add(spider);
