@@ -12,8 +12,13 @@ public enum Emote {
     GHOST(" \ud83d\udc7b"),
     WOMANZOMBIE(" \ud83e\udddf\u200d\ufe0f"),
     KEY(" \ud83d\udddd\ufe0f"),
-    DOORS(" \ud83d\udeaa");
-    
+    DOORS(" \ud83d\udeaa"),
+    TREE("\ud83c\udf32\ud83c\udf32"),
+    WALL5("\ud83c\udfd4\ufe0f\ud83c\udfd4\ufe0f"),
+    TREE2("\ud83c\udf33\ud83c\udf33"),
+    SWORD(" \ud83d\udde1\ufe0f"),
+    POTION(" \ud83c\udf7a");
+
     private String emote;
 
     private Emote(String emote) {
