@@ -80,7 +80,6 @@ public class Board {
         Obstacle wall8 = new Obstacle(new Coordinates(23, 6), 1, 6, Emote.WALL1.getEmote());
         Obstacle wall9 = new Obstacle(new Coordinates(1, 21), 1, 6, Emote.WALL1.getEmote());
         Obstacle wall10 = new Obstacle(new Coordinates(6, 23), 6, 1, Emote.WALL1.getEmote());
-        
         Obstacle lava = new Lava(new Coordinates(22,21), 1, 7, Emote.LAVA.getEmote());
         Obstacle lava1 = new Lava(new Coordinates(21,21), 6, 1, Emote.LAVA.getEmote());
         Obstacle door = new Door(new Coordinates(21,27), 2, 1, Emote.DOORS.getEmote());

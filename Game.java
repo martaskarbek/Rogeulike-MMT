@@ -11,8 +11,6 @@ class Game extends KeyAdapter {
     private final Coordinates d = new Coordinates(0, 1);
 
     public Game() {
-        // this.board = new Board();
-        // board.printBoard();
         mainMenu();
     }
 
@@ -44,10 +42,7 @@ class Game extends KeyAdapter {
                 }
                 break;
         }
-        // System.out.println(board.getPlayer().toString());
-
         board.printBoard();
-        // print board again
     }
 
     public static void clearScreen() {
