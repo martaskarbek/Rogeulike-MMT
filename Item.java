@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+
 public abstract class Item {
 
     Coordinates item;
@@ -14,5 +17,9 @@ public abstract class Item {
 
     public String getSign() {
         return this.sign;
+    }
+
+    public void setStats(Player player, ArrayList<Item> items, ArrayList<Item> inventory) {
+        // todo
     }
 }
