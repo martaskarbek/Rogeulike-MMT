@@ -97,13 +97,13 @@ public class Board {
     private void generateItems(){
         Item candy = new Candy(new Coordinates(20, 20), Emote.CANDY.getEmote());
         Item candy1 = new Candy(new Coordinates(5, 8), Emote.CANDY.getEmote());
-        Item candy2 = new Candy(new Coordinates(26, 26), Emote.CANDY.getEmote());
+        Item pumpkin = new Candy(new Coordinates(26, 26), Emote.PUMPKIN.getEmote());
         Item key = new Key(new Coordinates(26, 3), Emote.KEY.getEmote());
         Item sword = new Sword(new Coordinates(15, 15), Emote.SWORD.getEmote());
         Item potion = new Potion(new Coordinates(18, 23), Emote.POTION.getEmote());
         this.items.add(candy);
         this.items.add(candy1);
-        this.items.add(candy2);
+        this.items.add(pumpkin);
         this.items.add(key);
         this.items.add(sword);
         this.items.add(potion); 
@@ -174,14 +174,29 @@ public class Board {
                     player.setHealth(25);
                     items.remove(item);
                 }
+                if(item instanceof Pumpkin) {
+                    Input input = new Input();
+                    System.out.println("DUPA");
+                    final int answear = input.getIntInput("next level? /1");
+                        switch (answear) {
+                            case 1:
+                                Board2 board2 = new Board2();
+                                board2.printBoard2(player);
+                                break;
+                            default:
+                            System.out.println("See you soon!");
+                                break;
+                        }
+
+                }
                return true;
             }
         }
 
         for (Enemy enemy : enemies) {
-            Coordinates sign = enemy.getEnemy();
+            Coordinates signn = enemy.getEnemy();
             
-            if (isPlayerOnItemOrEnemy(x, y, sign)) {
+            if (isPlayerOnItemOrEnemy(x, y, signn)) {
                 if(enemy instanceof Spider) {
                     interactionWithEnemy(enemy, player);
                 }
@@ -200,7 +215,7 @@ public class Board {
         }
         return true;
     }
-
+    
     private boolean isCoordinatesInRange(int x, int y, Coordinates pivot, int height, int width) {
         return x >= pivot.getX()
             && x < pivot.getX()+height 

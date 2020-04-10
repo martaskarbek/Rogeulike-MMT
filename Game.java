@@ -1,9 +1,11 @@
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     
     static Board board;
+    Board2 board2;
     Player player = new Player();
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
@@ -56,10 +58,11 @@ class Game extends KeyAdapter {
     }
 
     public void mainMenu() {
+        Input input = new Input();
         board = new Board();
+        board2 = new Board2();
         System.out.println("1. Play the game\n2. High Score\n0. Exit");
-        int option;
-        option = Input.getIntInput("Enter a number to choose: ");
+        final int option = input.getIntInput("Enter a number to choose: ");
         clearScreen();
         System.out.println("");
         switch (option) {

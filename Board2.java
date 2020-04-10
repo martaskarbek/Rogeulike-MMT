@@ -7,7 +7,8 @@ public class Board2 {
     ArrayList<Enemy> enemies;
     ArrayList<Item> inventory;
     ArrayList<Item> items;
-
+    boolean nextMap = false;
+   
     public Board2() {
         this.player = new Player();
         this.obstacles = new ArrayList<>();
@@ -160,12 +161,13 @@ public class Board2 {
 
         for (Item item : items) {
             Coordinates sign = item.getItem();
-            
+
            if (isPlayerOnItemOrEnemy(x, y, sign)) {
                if(item instanceof Candy) {
-                    this.player.setPoints(10);
+                    player.setPoints(10);
                     items.remove(item);
-                    System.out.println(this.player.getPoints());
+                    System.out.println(player.getPoints());
+                    nextMap = true;
                 }
                 if(item instanceof Key) {
                     this.inventory.add(item);

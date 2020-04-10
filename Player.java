@@ -1,15 +1,15 @@
 public class Player {
-    private int points;
+    public int points;
     private int health = 200;
     private int attack = 5;
     Coordinates position;
     private String sign = " @";
 
-    public Player(){
+    public Player() {
         this.position = new Coordinates(5, 5);
     }
 
-    public void move(Coordinates coord){
+    public void move(Coordinates coord) {
         position.setX(position.getX() + coord.getX());
         position.setY(position.getY() + coord.getY());
     }

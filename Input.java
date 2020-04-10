@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Input {
-    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public int getIntInput() {
         return scanner.nextInt();
@@ -12,7 +12,7 @@ public class Input {
         return scanner.next();
     }
 
-    public static int getIntInput(String message) {
+    public int getIntInput(String message) {
         System.out.println(message);
         return scanner.nextInt();
     }

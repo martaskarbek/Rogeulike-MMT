@@ -17,6 +17,7 @@ public enum Emote {
     WALL5("\ud83c\udfd4\ufe0f\ud83c\udfd4\ufe0f"),
     TREE2("\ud83c\udf33\ud83c\udf33"),
     SWORD(" \ud83d\udde1\ufe0f"),
+    PUMPKIN("\ud83c\udf83"),
     POTION(" \ud83c\udf7a");
 
     private String emote;

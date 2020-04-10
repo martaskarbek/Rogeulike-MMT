@@ -3,9 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class App {
-
-    public static void main(String[] args) {
-    
+    public void startGame() {
         JTextField textField = new JTextField();
 
         textField.addKeyListener(new Game());
@@ -14,5 +12,10 @@ public class App {
         jframe.add(textField);
         jframe.setSize(100, 100);
         jframe.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        App app = new App();
+        app.startGame();
     }
 }
