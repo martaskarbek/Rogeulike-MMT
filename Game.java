@@ -4,13 +4,14 @@ import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     
-    static Board board;
+    Board board;
     Board2 board2;
     Player player = new Player();
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
     private final Coordinates a = new Coordinates(0, -1);
     private final Coordinates d = new Coordinates(0, 1);
+    Input input = new Input();
 
     public Game() {
         // this.board = new Board();
@@ -52,9 +53,6 @@ class Game extends KeyAdapter {
         if (player.getPoints() >= 20) {
             clearScreen();
             System.out.println("See you soon!");
-            //board2.printBoard2(player);
-            //nextLevel();
-
             
         }
         // print board again
@@ -70,7 +68,7 @@ class Game extends KeyAdapter {
     }
 
     public void mainMenu() {
-        Input input = new Input();
+        
         board = new Board();
         board2 = new Board2();
         System.out.println("1. Play the game\n2. High Score\n0. Exit");
