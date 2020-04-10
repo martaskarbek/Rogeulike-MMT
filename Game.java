@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     
-    Board board;
-    Board2 board2;
+    Board board = new Board();
+    Board2 board2 = new Board2();
     Player player = new Player();
     private final Coordinates w = new Coordinates(-1, 0);
     private final Coordinates s = new Coordinates(1, 0);
@@ -51,10 +51,12 @@ class Game extends KeyAdapter {
 
         board.printBoard(player);
         if (player.getPoints() >= 20) {
-            clearScreen();
-            System.out.println("See you soon!");
+            clearScreen();  //remember guys everything what is happening here is happening infinity!!!
+            //System.out.println("See you soon!");
+            
             
         }
+        //break;
         // print board again
     }
 
@@ -69,8 +71,7 @@ class Game extends KeyAdapter {
 
     public void mainMenu() {
         
-        board = new Board();
-        board2 = new Board2();
+       
         System.out.println("1. Play the game\n2. High Score\n0. Exit");
         final int option = input.getIntInput("Enter a number to choose: ");
         clearScreen();
